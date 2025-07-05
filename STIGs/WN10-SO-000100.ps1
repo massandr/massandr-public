@@ -58,4 +58,4 @@ catch {
     exit 1
 }
 
-Write-Host "Script finished."
+Write-Host "Script finished. Please reboot."
