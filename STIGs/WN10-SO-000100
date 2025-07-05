@@ -1,0 +1,44 @@
+<#
+.SYNOPSIS
+    Remediates STIG V-220925 by requiring SMB client packet signing.
+.DESCRIPTION
+    This script configures the Windows SMB client to always perform SMB packet signing
+    by setting the 'RequireSecuritySignature' registry value to 1.
+    This script must be run with Administrator privileges.
+.NOTES
+    STIG ID: WN10-SO-000100
+    Vulnerability ID: V-220925
+#>
+
+#Requires -RunAsAdministrator
+
+# --- Configuration ---
+$RegPath   = "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters"
+$ValueName = "RequireSecuritySignature"
+$ValueData = 1
+$ValueType = "DWord"
+
+# --- Script Body ---
+Write-Host "Attempting to remediate STIG V-220925..."
+Write-Host "Configuring SMB client to require security signatures."
+
+try {
+    # Set the registry value to enforce SMB packet signing
+    Set-ItemProperty -Path $RegPath -Name $ValueName -Value $ValueData -Type $ValueType -Force
+
+    # --- Verification ---
+    Write-Host "Verifying the setting..."
+    $currentValue = (Get-ItemProperty -Path $RegPath -Name $ValueName).$ValueName
+
+    if ($currentValue -eq $ValueData) {
+        Write-Host -ForegroundColor Green "✅ SUCCESS: Remediation complete. '$ValueName' is set to '$currentValue'."
+    } else {
+        Write-Error "❌ FAILURE: Verification failed. The value is currently set to '$currentValue'."
+    }
+}
+catch {
+    Write-Error "An error occurred: $_"
+    exit 1
+}
+
+Write-Host "Script finished."
