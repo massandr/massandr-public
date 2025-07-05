@@ -4,13 +4,30 @@
 .DESCRIPTION
     This script configures the Windows SMB client to always perform SMB packet signing
     by setting the 'RequireSecuritySignature' registry value to 1.
-    This script must be run with Administrator privileges.
-.NOTES
-    STIG ID: WN10-SO-000100
-    Vulnerability ID: V-220925
-#>
 
+.NOTES
+    Author          : Andrey Massalskiy
+    LinkedIn        : linkedin.com/in/massandr/
+    GitHub          : github.com/massandr
+    Date Created    : 2025-07-05
+    Last Modified   : 2025-07-05
+    Version         : 1.0
+    CVEs            : N/A
+    Plugin IDs      : N/A
+    STIG-ID         : WN10-SO-000100
+
+.TESTED ON
+    Date(s) Tested  : 
+    Tested By       : 
+    Systems Tested  : 
+    PowerShell Ver. : 
+
+.USAGE
+    Example syntax:
+    PS C:\> .\WN10-SO-000100.ps1 
+#>
 #Requires -RunAsAdministrator
+
 
 # --- Configuration ---
 $RegPath   = "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters"
