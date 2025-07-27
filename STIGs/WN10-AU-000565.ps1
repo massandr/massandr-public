@@ -21,7 +21,7 @@
 
 .USAGE
     Example syntax:
-    PS C:\> .\STIG-ID-WN10-AU-000565.ps1 
+    PS C:\> .\WN10-AU-000565.ps1 
     This script must be run with Administrator privileges.
 #>
 
