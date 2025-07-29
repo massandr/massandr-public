@@ -21,7 +21,7 @@
 
 .USAGE
     Example syntax:
-    PS C:\> .\WN10-AU-000565.ps1 
+    PS C:\> .\WWN10-CC-000391.ps1 
     This script must be run with Administrator privileges.
 #>
 # Requires -RunAsAdministrator
